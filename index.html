@@ -17,10 +17,11 @@
       var guessesLeft = 9;
 
       document.onkeyup =function(event) {
+        if (guessesLeft >= 0){
         var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
           var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-          if ((userGuess == computerChoices)) {
+          if ((userGuess === computerGuess)) {
             wins++
 
           }
@@ -42,7 +43,23 @@
 
               document.querySelector('#game').innerHTML = html;
 
-      }
+                guessesLeft --;
+
+                if (guessesLeft === 0) {
+                  var playAgain = prompt('Want to play again?').toLowerCase();
+
+                  if (playAgain === 'yes'){
+                    location.reload();
+
+                  }
+                }
+
+                
+              }
+              
+
+          
+      } 
       
 
     </script>
